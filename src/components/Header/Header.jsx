@@ -28,7 +28,7 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    padding: 1rem 0 1rem 0;
+    padding: 0 0 52px 0;
 `;
 
 const HeaderContent = styled.div`

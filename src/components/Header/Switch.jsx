@@ -41,5 +41,4 @@ const Span = styled.span`
     border-radius: 45px;
     transition: 0.2s;
     background: #fff;
-    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 `

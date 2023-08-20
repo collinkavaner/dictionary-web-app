@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 // Supports weights 400-700
-import '@fontsource-variable/lora';
+import '@fontsource/lora/400-italic.css';
+import '@fontsource/lora/500-italic.css';
+import '@fontsource/lora/600-italic.css';
+import '@fontsource/lora/700-italic.css';
+import '@fontsource/lora/400.css';
+import '@fontsource/lora/500.css';
+import '@fontsource/lora/600.css';
+import '@fontsource/lora/700.css';
 
 const GlobalStyle = createGlobalStyle`
     *, *::before, *::after {
@@ -14,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-        font-family: 'Lora Variable', sans-serif;
+        font-family: 'Lora', sans-serif;
     }
 
     img, picture, video, canvas, svg {
@@ -28,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
 
     p, h1, h2, h3, h4, h5, h6 {
         overflow-wrap: break-word;
+        color: #2D2D2D;
     }
   
     #root, #__next {
@@ -52,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
     h4 {
         font-size: 0.875rem;    //14px
         line-height: 17px;
+        text-decoration: underline;
     }
 
     p {

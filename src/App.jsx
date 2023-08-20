@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import GlobalStyle from './styles/GlobalStyles'
 
 import Header from './components/Header/Header'
+import SearchBar from './components/Search/SearchBar'
+import ResultBody from './components/Result/Result'
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
     <Main>
       <GlobalStyle />
       <Header />
+      <SearchBar />
+      <ResultBody />
     </Main>
   )
 }
@@ -18,6 +22,5 @@ export default App
 
 const Main = styled.main`
   max-width: 737px;
-  margin: 0 auto;
-  padding: 1rem;
+  margin: 58px auto;
 `
