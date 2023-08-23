@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
 import ResultHeading from './ResultHeading'
-import NounSection from './ContentSection'
+import ContentSection from './ContentSection'
 import ResultFooter from './ResultFooter'
 
-const ResultBody = () => {
+const ResultBody = ({ result }) => {
     return (
         <Result>
-            <ResultHeading />
-            <NounSection />
-            <ResultFooter />
+            <ResultHeading result={result} />
+            <ContentSection result={result} />
+            <ResultFooter result={result} />
         </Result>
     )
 }

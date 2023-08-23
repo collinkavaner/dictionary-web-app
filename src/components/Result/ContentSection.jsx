@@ -1,37 +1,34 @@
 import styled from 'styled-components'
 
-const NounSection = () => {
+const ContentSection = ({ result }) => {
     return (
         <NounContent>
-            <Title>
-                <h2>noun</h2>
-                <hr />
-            </Title>
-            <Content>
-                <h3>Meaning</h3>
-                <UnorderedList>
-                    <ListItem>(etc.) A set of keys used to operate a typewriter, computer etc.</ListItem>
-                    <ListItem>A component of many instruments including the piano, organ, and harpsichord consisting of usually black and white keys that cause different tones to be produced when struck.</ListItem>
-                    <ListItem>A device with keys of a musical keyboard, used to control electronic sound-producing devices which may be built into or separate from the keyboard device.</ListItem>
-                </UnorderedList>
-                <SynonymWord>Synonyms<span>electronic keyboard</span></SynonymWord>
-            </Content>
-            <Title>
-                <h2>verb</h2>
-                <hr />
-            </Title>
-            <Content>
-                <h3>Meaning</h3>
-                <UnorderedList>
-                    <ListItem><p>To type on a computer keyboard.</p><Example>“Keyboarding is the part of this job I hate the most.”</Example></ListItem>
-                </UnorderedList>
-                {/* <SynonymWord>Synonyms<span>electronic keyboard</span></SynonymWord> */}
-            </Content>
+
+            {result.meanings.map((meaning, index) => (
+                <div key={index}>
+                    <Title>
+                        <h2>{meaning.partOfSpeech}</h2>
+                        <hr />
+                    </Title>
+                    <Content>
+                        <h3>Meaning</h3>
+                        <UnorderedList>
+                            {meaning.definitions.map((definition, index) => (
+                                <ListItem key={index}>
+                                    <p>{definition.definition}</p>
+                                    {definition.example && <Example>“{definition.example}”</Example>}
+                                </ListItem>
+                            ))}
+                        </UnorderedList>
+                        { meaning.synonyms.length !== 0 && <SynonymWord>Synonyms<span>{meaning.synonyms.map((synonym, index) => <span key={index}>{synonym}</span>)}</span></SynonymWord> }
+                    </Content>
+                </div>
+            ))}
         </NounContent>
     )
 }
 
-export default NounSection
+export default ContentSection
 
 const NounContent = styled.div`
     width: 100%;

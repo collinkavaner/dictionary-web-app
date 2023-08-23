@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import {HiMiniArrowTopRightOnSquare} from 'react-icons/hi2'
 
-const ResultFooter = () => {
+const ResultFooter = ({ result }) => {
     return (
         <Footer>
             <hr />
-            <h4>Source<span>https://en.wiktionary.org/wiki/keyboard</span><HiMiniArrowTopRightOnSquare /></h4>
+            <h4>Source<a href={result.sourceUrls} target="_blank" rel="noreferrer">{result.sourceUrls}</a><HiMiniArrowTopRightOnSquare /></h4>
         </Footer>
     )
 }
@@ -29,7 +29,7 @@ const Footer = styled.footer`
         align-items: center;
         gap: 10px;
 
-        span {
+        a {
             color: #2D2D2D;
             margin-left: 10px;
         }

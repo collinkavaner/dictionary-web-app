@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import {HiMiniPlay} from 'react-icons/hi2'
 
-const ResultBody = () => {
+const ResultBody = ({ result }) => {
     return (
         <Heading>
             <div>
-                <h1>Keyboard</h1>
-                <Phonetic><span>/</span>'ki:bɔ:d<span>/</span></Phonetic>
+                <h1>{result.word}</h1>
+                <Phonetic>{result.phonetics[0].text || result.phonetics[1].text}</Phonetic>
             </div>
             <AudioButton>
                 <HiMiniPlay />

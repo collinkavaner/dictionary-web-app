@@ -1,10 +1,21 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import Search from '../../assets/search.svg';
 
-const SearchBar = () => {
+function SearchBar({ handleResult }) {
+
+    const [search, setSearch] = useState('')
+    
+    const handleSearch = (e) => {
+        e.preventDefault()
+        handleResult(search)
+        setSearch('')
+    }
+
+
     return (
-        <SearchBarWrapper>
-            <SearchBarInput placeholder="Search for any word..."/>
+        <SearchBarWrapper onSubmit={handleSearch}>
+            <SearchBarInput placeholder="Search for any word..." value={search} onChange={(e) => setSearch(e.target.value)} />
         </SearchBarWrapper>
     )
 }
