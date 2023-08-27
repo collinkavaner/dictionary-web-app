@@ -2,19 +2,22 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Search from '../../assets/search.svg';
 
-function SearchBar({ handleResult }) {
+function SearchBar({ setResult, setErrorMsg }) {
 
     const [search, setSearch] = useState('')
-
-
-    // useEffect(() => {
-    //     console.log('useEffect')
-    //     handleResult('keyboard')
-    // }, [])
     
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault()
-        handleResult(search)
+        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
+        const data = await res.json()
+
+        if (res.status >= 400 && res.status <= 600) {
+            setErrorMsg(data)
+            setResult([]) // to clear the result
+            } else {
+            setResult(data[0])
+            setErrorMsg([]) // to clear the error message
+            }
         setSearch('')
     }
 

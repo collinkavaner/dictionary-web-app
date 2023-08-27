@@ -12,29 +12,16 @@ export default function App() {
   const [result, setResult] = useState([])
   const [errorMsg, setErrorMsg] = useState([])
 
-  const handleResult = useCallback((search) => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.title) {
-          setErrorMsg(data)
-          setResult([]) // to clear the result
-        } else {
-          setResult(data[0])
-          setErrorMsg([]) // to clear the error message
-        }
-      })
-      .catch(err => console.log(err))
-  }, [])
 
-  console.log(result)
-  console.log(errorMsg)
+
+  //console.log(result)
+  //console.log(errorMsg)
 
   return (
     <Main>
       <GlobalStyle />
       <Header />
-      <SearchBar handleResult={handleResult} />
+      <SearchBar setResult={setResult} setErrorMsg={setErrorMsg} />
       { errorMsg.length !== 0 ? <ErrorSection errorMsg={errorMsg} /> : <ResultBody result={result} /> }
     </Main>
   )
