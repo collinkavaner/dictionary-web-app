@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Search from '../../assets/search.svg';
 
 function SearchBar({ handleResult }) {
 
     const [search, setSearch] = useState('')
+
+
+    // useEffect(() => {
+    //     console.log('useEffect')
+    //     handleResult('keyboard')
+    // }, [])
     
     const handleSearch = (e) => {
         e.preventDefault()

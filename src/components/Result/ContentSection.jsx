@@ -20,7 +20,16 @@ const ContentSection = ({ result }) => {
                                 </ListItem>
                             ))}
                         </UnorderedList>
-                        { meaning.synonyms.length !== 0 && <SynonymWord>Synonyms<span>{meaning.synonyms.map((synonym, index) => <span key={index}>{synonym}</span>)}</span></SynonymWord> }
+                        { meaning.synonyms.length !== 0 &&
+                        <SynonymWord>
+                            <div>
+                                Synonyms
+                            </div>
+                            <Synonyms>
+                                { meaning.synonyms.map((synonym, index) => 
+                                <span key={index}>{synonym}</span>)}
+                            </Synonyms>
+                        </SynonymWord> }
                     </Content>
                 </div>
             ))}
@@ -76,8 +85,18 @@ const ListItem = styled.li`
 `
 
 const SynonymWord = styled.h3`
+    display: flex;
+`
+
+const Synonyms = styled.div`
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 25px;
+    flex-direction: row;
+    margin-left: 25px;
+
     span {
-        margin-left: 25px;
         color: #A445ED;
         font-weight: 700;
     }
