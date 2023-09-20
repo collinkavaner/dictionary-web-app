@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import {HiMiniPlay} from 'react-icons/hi2'
 
 const ResultBody = ({ result }) => {
+    const validPhonetics = result.phonetics?.find(phonetics => phonetics.text && phonetics.audio)
     return (
         <Heading>
             <div>
                 <h1>{result.word}</h1>
-                <Phonetic>{result.phonetics[0].text || result.phonetics[1].text}</Phonetic>
+                <Phonetic>{validPhonetics?.text}</Phonetic>
             </div>
             <AudioButton>
                 <HiMiniPlay />

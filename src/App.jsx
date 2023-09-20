@@ -14,7 +14,7 @@ export default function App() {
 
 
 
-  //console.log(result)
+  console.log(result)
   //console.log(errorMsg)
 
   return (
