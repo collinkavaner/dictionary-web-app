@@ -1,12 +1,20 @@
 import styled from 'styled-components'
+import {useRef, useEffect} from 'react'
 import {HiMiniPlay} from 'react-icons/hi2'
 
 const ResultBody = ({ result }) => {
     const validPhonetics = result.phonetics?.find(phonetics => phonetics.text && phonetics.audio)
 
+    const audioRef = useRef()
+
+    useEffect(() => {
+        if (validPhonetics?.audio) {
+            audioRef.current = new Audio(validPhonetics.audio)
+        }
+    }, [result])
+
     const playAudio = () => {
-        const audio = new Audio(validPhonetics.audio)
-        audio.play()
+        audioRef.current.play()
     }
 
     return (
@@ -15,9 +23,11 @@ const ResultBody = ({ result }) => {
                 <h1>{result.word}</h1>
                 <Phonetic>{validPhonetics?.text}</Phonetic>
             </div>
+            {validPhonetics?.audio && (
             <AudioButton onClick={playAudio}>
                 <HiMiniPlay />
             </AudioButton>
+            )}
         </Heading>
     )
 }
