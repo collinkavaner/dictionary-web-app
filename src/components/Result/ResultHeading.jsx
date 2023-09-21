@@ -3,13 +3,19 @@ import {HiMiniPlay} from 'react-icons/hi2'
 
 const ResultBody = ({ result }) => {
     const validPhonetics = result.phonetics?.find(phonetics => phonetics.text && phonetics.audio)
+
+    const playAudio = () => {
+        const audio = new Audio(validPhonetics.audio)
+        audio.play()
+    }
+
     return (
         <Heading>
             <div>
                 <h1>{result.word}</h1>
                 <Phonetic>{validPhonetics?.text}</Phonetic>
             </div>
-            <AudioButton>
+            <AudioButton onClick={playAudio}>
                 <HiMiniPlay />
             </AudioButton>
         </Heading>
