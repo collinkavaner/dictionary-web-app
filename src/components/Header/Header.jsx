@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 import book from '../../assets/book_logo.svg';
-import {HiOutlineMoon, HiMiniChevronDown} from 'react-icons/hi2';
+import {HiOutlineMoon, HiOutlineSun, HiMiniChevronDown} from 'react-icons/hi2';
 
 import Switch from './Switch';
 
-function Header() {
+function Header({ theme, toggleTheme }) {
   return (
     <StyledHeader>
         <Logo src={book} alt="Book logo" />
@@ -15,8 +15,9 @@ function Header() {
             </FontSwitcher>
             <Divider />
             <ThemeSwitcher>
-                <Switch />
-                <HiOutlineMoon style={{ stroke: '#757575' }}/>
+                <Switch theme={theme} toggleTheme={toggleTheme} />
+                { theme === 'dark' ? <HiOutlineSun style={{ stroke: '#757575' }}/>
+                : <HiOutlineMoon style={{ stroke: '#757575' }}/> }
             </ThemeSwitcher>
         </HeaderContent>
     </StyledHeader>
@@ -27,7 +28,6 @@ const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
     padding: 0 0 52px 0;
 `;
 
@@ -42,7 +42,7 @@ const Logo = styled.img`
     height: 36px;
 `;
 
-const FontSwitcher = styled.button`
+const FontSwitcher = styled.div`
     padding: 0;
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@ const Divider = styled.div`
     background-color: #ccc;
 `;
 
-const ThemeSwitcher = styled.div`
+const ThemeSwitcher = styled.button`
     max-width: 80px;
     display: flex;
     align-items: center;

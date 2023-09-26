@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import GlobalStyle from './styles/GlobalStyles'
-import { useCallback } from 'react'
+import { ThemeProvider } from 'styled-components'
+import { lightTheme, darkTheme } from './styles/Themes'
 
 import Header from './components/Header/Header'
 import SearchBar from './components/Search/SearchBar'
@@ -9,9 +10,14 @@ import ResultBody from './components/Result/Result'
 
 export default function App() {
 
+  const [theme, setTheme] = useState('light')
   const [result, setResult] = useState([])
   const [errorMsg, setErrorMsg] = useState([])
 
+
+  const toggleTheme = () => {
+    theme === 'dark' ? setTheme('light') : setTheme('dark')
+  }
 
 
   console.log(result)
@@ -19,10 +25,12 @@ export default function App() {
 
   return (
     <Main>
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme} >
       <GlobalStyle />
-      <Header />
-      <SearchBar setResult={setResult} setErrorMsg={setErrorMsg} />
-      { errorMsg.length !== 0 ? <ErrorSection errorMsg={errorMsg} /> : <ResultBody result={result} /> }
+      <Header theme={theme} toggleTheme={toggleTheme} />
+      <SearchBar setResult={setResult} setErrorMsg={setErrorMsg} theme={theme === 'dark' ? darkTheme : lightTheme} />
+      { errorMsg.length !== 0 ? <ErrorSection errorMsg={errorMsg} /> : <ResultBody result={result} theme={theme} /> }
+      </ThemeProvider>
     </Main>
   )
 }

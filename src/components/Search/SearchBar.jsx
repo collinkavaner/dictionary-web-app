@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Search from '../../assets/search.svg';
 
 function SearchBar({ setResult, setErrorMsg }) {
@@ -41,15 +41,17 @@ const SearchBarInput = styled.input`
     padding: 24px 64px 24px 24px;
     border-radius: 16px;
     border: none;
-    background-color: #F4F4F4;
+    background-color: ${({ theme }) => theme.bgSecondary};
     font-size: 1.25rem; // 20px
     font-weight: 700; 
     background-image: url(${Search});
     background-repeat: no-repeat;
     background-position: 95% 50%;
+    color: ${({ theme }) => theme.textPrimary};
 
     &::placeholder {
-        color: #c2c2c2;
+        color: ${({ theme }) => theme.textPrimary};
+        opacity: 0.5;
     }
 
     &:focus {

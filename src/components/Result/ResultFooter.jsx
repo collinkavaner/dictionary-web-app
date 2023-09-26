@@ -30,7 +30,7 @@ const Footer = styled.footer`
         gap: 10px;
 
         a {
-            color: #2D2D2D;
+            color: ${({theme}) => theme.textPrimary};
             margin-left: 10px;
         }
     }

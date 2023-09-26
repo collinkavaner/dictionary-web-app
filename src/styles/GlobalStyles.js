@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
         font-family: 'Lora', sans-serif;
+        background-color: ${props => props.theme.bgPrimary};
     }
 
     img, picture, video, canvas, svg {
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
     p, h1, h2, h3, h4, h5, h6 {
         overflow-wrap: break-word;
-        color: #2D2D2D;
+        color: ${props => props.theme.textPrimary};
     }
   
     #root, #__next {

@@ -1,10 +1,20 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 
-const Switch = ({ isOn, handleToggle }) => {
+const Switch = ({ toggleTheme }) => {
+
+    const [isOn, setIsOn] = useState(false)
+
+    const toggle = () => {
+        setIsOn(!isOn)
+        toggleTheme()
+    }
+
+
     return (
         <Label>
-            <Checkbox type="checkbox" checked={isOn} onChange={handleToggle} />
-            <Span></Span>
+            <Toggle type="checkbox" checked={isOn} onChange={toggle} />
+            <Bubble></Bubble>
         </Label>
     )
 }
@@ -25,13 +35,13 @@ const Label = styled.label`
     transition: background-color .2s;
 `
 
-const Checkbox = styled.input`
+const Toggle = styled.input`
     height: 0;
     width: 0;
     visibility: hidden;
 `
 
-const Span = styled.span`
+const Bubble = styled.span`
     content: '';
     position: absolute;
     top: 3px;

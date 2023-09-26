@@ -48,7 +48,7 @@ const Phonetic = styled.h2`
 `;
 
 const AudioButton = styled.button`
-    background-color: #e4d2f7;
+    background-color: rgba(164, 69, 237, 0.2);
     border: none;
     border-radius: 50%;
     cursor: pointer;
