@@ -11,12 +11,17 @@ import ResultBody from './components/Result/Result'
 export default function App() {
 
   const [theme, setTheme] = useState('light')
+  const [font, setFont] = useState('Lora')
   const [result, setResult] = useState([])
   const [errorMsg, setErrorMsg] = useState([])
 
 
   const toggleTheme = () => {
     theme === 'dark' ? setTheme('light') : setTheme('dark')
+  }
+
+  const changeFont = (font) => {
+    setFont(font)
   }
 
 
@@ -26,8 +31,8 @@ export default function App() {
   return (
     <Main>
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme} >
-      <GlobalStyle />
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <GlobalStyle font={font} />
+      <Header theme={theme} toggleTheme={toggleTheme} changeFont={changeFont} />
       <SearchBar setResult={setResult} setErrorMsg={setErrorMsg} theme={theme === 'dark' ? darkTheme : lightTheme} />
       { errorMsg.length !== 0 ? <ErrorSection errorMsg={errorMsg} /> : <ResultBody result={result} theme={theme} /> }
       </ThemeProvider>

@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-        font-family: 'Lora', sans-serif;
+        font-family: ${props => props.font};
         background-color: ${props => props.theme.bgPrimary};
     }
 
@@ -69,6 +69,20 @@ const GlobalStyle = createGlobalStyle`
         line-height: 24px;
     }
 
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        padding: 0;
+        margin: 0;
+        text-align: inherit;
+        text-decoration: none;
+        color: inherit;
+        appearance: none;
+    }
 
   `;
 

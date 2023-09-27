@@ -1,18 +1,16 @@
 import { styled } from 'styled-components';
 import book from '../../assets/book_logo.svg';
-import {HiOutlineMoon, HiOutlineSun, HiMiniChevronDown} from 'react-icons/hi2';
+import { HiOutlineMoon, HiOutlineSun } from 'react-icons/hi2';
+import FontSwitcher from './FontSwitcher';
 
 import Switch from './Switch';
 
-function Header({ theme, toggleTheme }) {
+function Header({ theme, toggleTheme, changeFont }) {
   return (
     <StyledHeader>
         <Logo src={book} alt="Book logo" />
         <HeaderContent>
-            <FontSwitcher>
-                <FontType>Serif</FontType>
-                <HiMiniChevronDown/>
-            </FontSwitcher>
+            <FontSwitcher changeFont={changeFont} />
             <Divider />
             <ThemeSwitcher>
                 <Switch theme={theme} toggleTheme={toggleTheme} />
@@ -40,27 +38,6 @@ const HeaderContent = styled.div`
 const Logo = styled.img`
     width: 32px;
     height: 36px;
-`;
-
-const FontSwitcher = styled.div`
-    padding: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-
-    svg {
-        fill: #A445ED;
-        width: 100%;
-        height: 24px;
-    }
-`;
-
-const FontType = styled.p`
-    font-weight: 700;
 `;
 
 const Divider = styled.div`
