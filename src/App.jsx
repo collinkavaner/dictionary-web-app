@@ -32,7 +32,7 @@ export default function App() {
     <Main>
       <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme} >
       <GlobalStyle font={font} />
-      <Header theme={theme} toggleTheme={toggleTheme} changeFont={changeFont} />
+      <Header theme={theme} toggleTheme={toggleTheme} changeFont={changeFont} font={font} />
       <SearchBar setResult={setResult} setErrorMsg={setErrorMsg} theme={theme === 'dark' ? darkTheme : lightTheme} />
       { errorMsg.length !== 0 ? <ErrorSection errorMsg={errorMsg} /> : <ResultBody result={result} theme={theme} /> }
       </ThemeProvider>

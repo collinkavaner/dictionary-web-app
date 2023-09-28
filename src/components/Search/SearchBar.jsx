@@ -5,9 +5,18 @@ import Search from '../../assets/search.svg';
 function SearchBar({ setResult, setErrorMsg }) {
 
     const [search, setSearch] = useState('')
+    const [emptySearch, setEmptySearch] = useState(false)
     
     const handleSearch = async (e) => {
         e.preventDefault()
+
+        if (search === '') {
+            setEmptySearch(true)
+            setResult([])
+            setErrorMsg([])
+            return
+        }
+
         const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search}`)
         const data = await res.json()
 
@@ -48,6 +57,7 @@ const SearchBarInput = styled.input`
     background-repeat: no-repeat;
     background-position: 95% 50%;
     color: ${({ theme }) => theme.textPrimary};
+    transition: all .2s ease-in-out;
 
     &::placeholder {
         color: ${({ theme }) => theme.textPrimary};
@@ -57,4 +67,6 @@ const SearchBarInput = styled.input`
     &:focus {
         outline: solid 2px #A445ED;
     }
+
+    // if query is empty outline will be red
 `;

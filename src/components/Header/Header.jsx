@@ -5,16 +5,16 @@ import FontSwitcher from './FontSwitcher';
 
 import Switch from './Switch';
 
-function Header({ theme, toggleTheme, changeFont }) {
+function Header({ theme, toggleTheme, changeFont, font }) {
   return (
     <StyledHeader>
         <Logo src={book} alt="Book logo" />
         <HeaderContent>
-            <FontSwitcher changeFont={changeFont} />
+            <FontSwitcher changeFont={changeFont} font={font} />
             <Divider />
             <ThemeSwitcher>
                 <Switch theme={theme} toggleTheme={toggleTheme} />
-                { theme === 'dark' ? <HiOutlineSun style={{ stroke: '#757575' }}/>
+                { theme === 'dark' ? <HiOutlineSun style={{ stroke: '#ffffff' }}/>
                 : <HiOutlineMoon style={{ stroke: '#757575' }}/> }
             </ThemeSwitcher>
         </HeaderContent>
@@ -46,7 +46,7 @@ const Divider = styled.div`
     background-color: #ccc;
 `;
 
-const ThemeSwitcher = styled.button`
+const ThemeSwitcher = styled.div`
     max-width: 80px;
     display: flex;
     align-items: center;

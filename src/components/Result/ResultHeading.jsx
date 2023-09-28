@@ -62,4 +62,8 @@ const AudioButton = styled.button`
         width: 100%;
         height: 24px;
     }
+
+    &:active {
+        transform: scale(0.9);
+    }
 `;

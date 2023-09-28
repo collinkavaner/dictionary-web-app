@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-// Supports weights 400-700
+// Lora - Supports weights 400-700
 import '@fontsource/lora/400-italic.css';
 import '@fontsource/lora/500-italic.css';
 import '@fontsource/lora/600-italic.css';
@@ -8,6 +8,12 @@ import '@fontsource/lora/400.css';
 import '@fontsource/lora/500.css';
 import '@fontsource/lora/600.css';
 import '@fontsource/lora/700.css';
+
+// Inter - Supports weights 100-900
+import '@fontsource-variable/inter';
+
+// Inconsolata - Supports weights 200-900
+import '@fontsource-variable/inconsolata';
 
 const GlobalStyle = createGlobalStyle`
     *, *::before, *::after {
@@ -23,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         font-family: ${props => props.font};
         background-color: ${props => props.theme.bgPrimary};
+        transition: all 0.2s ease-in-out;
     }
 
     img, picture, video, canvas, svg {
