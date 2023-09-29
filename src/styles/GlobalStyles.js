@@ -29,7 +29,9 @@ const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         font-family: ${props => props.font};
         background-color: ${props => props.theme.bgPrimary};
-        transition: all 0.2s ease-in-out;
+        transition: all 0.1s ease-in-out;
+
+        word-break: break-word;
     }
 
     img, picture, video, canvas, svg {
@@ -89,6 +91,33 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: inherit;
         appearance: none;
+    }
+
+    @media screen and (max-width: 442px) {
+        h1 {
+            font-size: 2rem;  //32px
+            line-height: 42px;
+        }
+
+        h2 {
+            font-size: 1.25rem; //20px
+            line-height: 24px;
+        }
+
+        h3 {
+            font-size: 1.125rem;    //18px
+            line-height: 24px;
+        }
+
+        h4 {
+            font-size: 1rem;    //16px
+            line-height: 19px;
+        }
+
+        p {
+            font-size: 1rem;    //16px
+            line-height: 19px;
+        }
     }
 
   `;

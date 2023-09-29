@@ -10,7 +10,8 @@ function SearchBar({ setResult, setErrorMsg }) {
     const handleSearch = async (e) => {
         e.preventDefault()
 
-        if (search === '') {
+        // if search is empty or only spaces
+        if (search === '' || !search.replace(/\s/g, '').length) {
             setEmptySearch(true)
             setResult([])
             setErrorMsg([])
@@ -33,7 +34,12 @@ function SearchBar({ setResult, setErrorMsg }) {
 
     return (
         <SearchBarWrapper onSubmit={handleSearch}>
-            <SearchBarInput placeholder="Search for any word..." value={search} onChange={(e) => setSearch(e.target.value)} />
+            {/* set emptySearch to false when there is a value in the input */}
+            <SearchBarInput placeholder="Search for any word..." value={search} $emptySearch={emptySearch}
+            onChange={(e) => {setSearch(e.target.value); setEmptySearch(false)}} />
+            <EmptyErrorMsg>
+                {emptySearch && <p style={{color: '#FF0000'}}>Whoops, can't be empty.</p>}
+            </EmptyErrorMsg>
         </SearchBarWrapper>
     )
 }
@@ -57,16 +63,34 @@ const SearchBarInput = styled.input`
     background-repeat: no-repeat;
     background-position: 95% 50%;
     color: ${({ theme }) => theme.textPrimary};
-    transition: all .2s ease-in-out;
+    transition: all .1s ease-in-out;
 
     &::placeholder {
         color: ${({ theme }) => theme.textPrimary};
         opacity: 0.5;
     }
 
+    //if input is focused purple outline. If emptySearch is true, red outline
     &:focus {
-        outline: solid 2px #A445ED;
+        outline: solid 2px ${props => props.$emptySearch ? '#FF0000' : '#A445ED'};
     }
 
-    // if query is empty outline will be red
+    @media screen and (max-width: 442px) {
+        font-size: 0.9rem; // 16px
+        height: 48px;
+    }
+
+`;
+
+const EmptyErrorMsg = styled.div`
+    width: 100%;
+    height: 25px;
+    margin-top: 10px;
+    font-size: 1.25rem; // 20px
+    color: #FF0000;
+
+    @media screen and (max-width: 442px) {
+        font-size: 0.9rem; // 16px
+        height: 20px;
+    }
 `;

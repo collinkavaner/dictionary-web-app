@@ -22,9 +22,9 @@ const ContentSection = ({ result }) => {
                         </UnorderedList>
                         { meaning.synonyms.length !== 0 &&
                         <SynonymWord>
-                            <div>
+                            <span>
                                 Synonyms
-                            </div>
+                            </span>
                             <Synonyms>
                                 { meaning.synonyms.map((synonym, index) => 
                                 <span key={index}>{synonym}</span>)}
@@ -47,17 +47,22 @@ const Title = styled.div`
     margin: 50px 0;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
 
     h2 {
         font-weight: 700;
         font-variation-settings: 'ital' 1;
         font-style: italic;
+        word-break: keep-all;
     }
 
     hr {
         width: 100%;
         border: 1px solid #E9E9E9;
+    }
+
+    @media screen and (max-width: 442px) {
+        margin: 32px 0;
     }
 `
 
@@ -73,6 +78,11 @@ const UnorderedList = styled.ul`
     margin-top: 24px;
     margin-bottom: 50px;
     padding-left: 2rem;
+
+    @media screen and (max-width: 442px) {
+        padding-left: 1rem;
+        margin-bottom: 32px;
+    }
 `
 
 const ListItem = styled.li`
@@ -86,6 +96,14 @@ const ListItem = styled.li`
 
 const SynonymWord = styled.h3`
     display: flex;
+
+    span {
+        word-break: keep-all;
+    }
+
+    @media screen and (max-width: 442px) {
+        font-size: 1rem;
+    }
 `
 
 const Synonyms = styled.div`

@@ -53,6 +53,15 @@ function ErrorSection( {errorMsg} ) {
 const Main = styled.main`
   max-width: 737px;
   margin: 58px auto;
+
+
+  @media (max-width: 776px) {
+    margin: 58px 24px;
+  }
+
+  @media (max-width: 442px) {
+    margin: 24px;
+  }
 `
 
 const ErrorMessage = styled.div`

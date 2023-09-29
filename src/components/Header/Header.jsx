@@ -27,6 +27,10 @@ const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 0 0 52px 0;
+
+    @media screen and (max-width: 442px) {
+        padding: 0 0 32px 0;
+    }
 `;
 
 const HeaderContent = styled.div`

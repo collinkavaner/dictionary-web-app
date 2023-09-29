@@ -34,6 +34,18 @@ const Footer = styled.footer`
             margin-left: 10px;
         }
     }
+
+    @media screen and (max-width: 442px) {
+        h4 {
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 5;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
 `
 
 

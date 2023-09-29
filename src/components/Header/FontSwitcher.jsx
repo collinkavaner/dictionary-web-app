@@ -10,7 +10,7 @@ const FontSwitcher = ({ changeFont, font }) => (
             <HiMiniChevronDown/>
         </FontSwitch>
     <Popover.Portal>
-      <Popover.Content sideOffset={20} align='end' alignOffset={0} avoidCollisions={false}>
+      <Popover.Content sideOffset={10} align='end' alignOffset={0} avoidCollisions={false}>
         <PopoverContent>
 
           <FontOne onClick={() => changeFont('Inter Variable')}> Sans Serif</FontOne>
@@ -47,6 +47,10 @@ const FontSwitch = styled(Popover.Trigger)`
 const FontType = styled.p`
     font-weight: 700;
     font-size: 1.25rem; // 20px
+
+    @media screen and (max-width: 442px) {
+        font-size: 0.9rem; // 14px
+    }
 `;
 
 const PopoverContent = styled.div`
@@ -59,6 +63,10 @@ const PopoverContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
+
+  @media screen and (max-width: 442px) {
+    width: 144px;
+  }
 `;
 
 const ChangeFont = styled(Popover.Close)`
@@ -72,6 +80,10 @@ const ChangeFont = styled(Popover.Close)`
 
     &:hover {
         color: #A445ED;
+    }
+
+    @media screen and (max-width: 442px) {
+        font-size: 0.9rem; // 14px
     }
 `;
 

@@ -40,6 +40,10 @@ const Heading = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 2rem 0;
+
+    @media screen and (max-width: 442px) {
+        margin: 0;
+    }
 `;
 
 const Phonetic = styled.h2`
